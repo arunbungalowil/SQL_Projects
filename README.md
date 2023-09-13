@@ -6,6 +6,6 @@ This repository is dedicated to various SQL projects, queries, and scripts that 
 
 Table of Contents
 
-Introduction
-1) Getting Started
-2) Project Descriptions
+1)Introduction
+2) Getting Started
+3) Project Descriptions
