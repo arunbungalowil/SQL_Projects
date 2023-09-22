@@ -7,8 +7,7 @@ This repository is dedicated to various SQL projects, queries, and scripts that 
 Table of Contents
 
 1) Introduction
-2) Getting Started
-3) Project Descriptions
+2) Project Descriptions
 
 
 Introduction
