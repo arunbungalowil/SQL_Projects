@@ -17,10 +17,10 @@ SQL (Structured Query Language) is a powerful tool for managing and analyzing st
 
 Project Descriptions:
 
-PROJECT 1: -- Customers and Products Analysis Using SQLCustomers and Products Analysis Using SQL
+# PROJECT 1: -- Customers and Products Analysis Using SQLCustomers and Products Analysis Using SQL
 
  # DATABASE => Scale Model Cars Database 
- #It contains eight tables:
+ ## It contains eight tables:
  1) Customers: customer data
  2)Employees: all employee information
  3) Offices: sales office information
