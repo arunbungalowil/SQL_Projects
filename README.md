@@ -14,3 +14,6 @@ Introduction
 
 
 SQL (Structured Query Language) is a powerful tool for managing and analyzing structured data. This repository contains a collection of SQL projects that cover a wide range of topics, from basic SQL queries to more advanced database management and optimization techniques.
+
+Project Descriptions
+
