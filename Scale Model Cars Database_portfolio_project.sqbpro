@@ -23,14 +23,21 @@ SELECT
 	country
 FROM customers
 GROUP BY country
-ORDER BY numbers ;
-
+ORDER BY numbers ;
+
+
+
 --Find Unique Product line and their numbers
-SELECT 
-	productLine,
-	SUM(quantityInStock) AS total
-FROM products
-GROUP BY productLine
+SELECT 
+
+	productLine,
+
+	SUM(quantityInStock) AS total
+
+FROM products
+
+GROUP BY productLine
+
 LIMIT 10
 -- Write a query to display the following table:
 -- Select each table name as a string.
@@ -109,87 +116,167 @@ SELECT
 		ON p.productCode = o.productCode
 		GROUP BY p.productCode
 		ORDER BY product_performance DESC
-		LIMIT 10) AS p)
+		LIMIT 10) AS p)
+
 		
 SELECT p.productCode,p.productName,p.productLine
 FROM products AS p
-WHERE p.productCode in table_1 AND p.productCode IN table_2;
-
---  how much profit each customer generates.
-SELECT 
-	o.customerNumber,
-	ROUND(SUM(od.quantityOrdered * (od.priceEach - p.buyPrice)),2) AS profit
-FROM orders AS o
-JOIN orderdetails AS od
-ON o.orderNumber = od.orderNumber
-JOIN products AS p
-ON p.productCode = od.productCode
-GROUP BY o.customerNumber
-ORDER BY profit DESC;
-
--- Find the top five VIP customers
-
-WITH
-	vip_customers AS(
-	SELECT 
-	o.customerNumber,
-	ROUND(SUM(od.quantityOrdered * (od.priceEach - p.buyPrice)),2) AS profit
-FROM orders AS o
-JOIN orderdetails AS od
-ON o.orderNumber = od.orderNumber
-JOIN products AS p
-ON p.productCode = od.productCode
-GROUP BY o.customerNumber
-ORDER BY profit DESC
-	)
-SELECT 
-	c.contactLastName || &quot; &quot; || c.contactFirstName,
-	c.city,
-	c.country,
-	profit
-FROM customers AS c
-JOIN vip_customers 
-ON vip_customers.customerNumber = c.customerNumber
-LIMIT 10;
-
--- Find the top five least-engaged customers
-WITH
-	non_vip_customers AS(
-	SELECT 
-	o.customerNumber,
-	ROUND(SUM(od.quantityOrdered * (od.priceEach - p.buyPrice)),2) AS profit
-FROM orders AS o
-JOIN orderdetails AS od
-ON o.orderNumber = od.orderNumber
-JOIN products AS p
-ON p.productCode = od.productCode
-GROUP BY o.customerNumber
-ORDER BY profit 
-	)
-SELECT 
-	c.contactLastName || &quot; &quot; || c.contactFirstName,
-	c.city,
-	c.country,
-	profit
-FROM customers AS c
-JOIN non_vip_customers 
-ON non_vip_customers.customerNumber = c.customerNumber
-LIMIT 10;
-	
--- Compute the average of customer profits
-
-WITH  performance AS
-(SELECT o.customerNumber, round(SUM(od.quantityOrdered * (od.priceEach - p.buyPrice)),2) AS profit
-FROM orders o
-JOIN orderdetails od ON od.orderNumber = o.orderNumber
-JOIN products p ON p.productCode = od.productCode
-GROUP BY o.customerNumber
-ORDER BY profit)
-SELECT  round(avg(profit),2) as LTV
-FROM performance;
--- 
--- LTV tells us how much profit an average customer generates during their lifetime with our store. 
--- We can use it to predict our future profit. So, if we get ten new customers next month, 
--- we'll earn 390,395 dollars, and we can decide based on this prediction how much we can spend on acquiring new customers.
-
+WHERE p.productCode in table_1 AND p.productCode IN table_2;
+
+
+
+--  how much profit each customer generates.
+
+SELECT 
+
+	o.customerNumber,
+
+	ROUND(SUM(od.quantityOrdered * (od.priceEach - p.buyPrice)),2) AS profit
+
+FROM orders AS o
+
+JOIN orderdetails AS od
+
+ON o.orderNumber = od.orderNumber
+
+JOIN products AS p
+
+ON p.productCode = od.productCode
+
+GROUP BY o.customerNumber
+
+ORDER BY profit DESC;
+
+
+
+-- Find the top five VIP customers
+
+
+
+WITH
+
+	vip_customers AS(
+
+	SELECT 
+
+	o.customerNumber,
+
+	ROUND(SUM(od.quantityOrdered * (od.priceEach - p.buyPrice)),2) AS profit
+
+FROM orders AS o
+
+JOIN orderdetails AS od
+
+ON o.orderNumber = od.orderNumber
+
+JOIN products AS p
+
+ON p.productCode = od.productCode
+
+GROUP BY o.customerNumber
+
+ORDER BY profit DESC
+
+	)
+
+SELECT 
+
+	c.contactLastName || &quot; &quot; || c.contactFirstName,
+
+	c.city,
+
+	c.country,
+
+	profit
+
+FROM customers AS c
+
+JOIN vip_customers 
+
+ON vip_customers.customerNumber = c.customerNumber
+
+LIMIT 10;
+
+
+
+-- Find the top five least-engaged customers
+
+WITH
+
+	non_vip_customers AS(
+
+	SELECT 
+
+	o.customerNumber,
+
+	ROUND(SUM(od.quantityOrdered * (od.priceEach - p.buyPrice)),2) AS profit
+
+FROM orders AS o
+
+JOIN orderdetails AS od
+
+ON o.orderNumber = od.orderNumber
+
+JOIN products AS p
+
+ON p.productCode = od.productCode
+
+GROUP BY o.customerNumber
+
+ORDER BY profit 
+
+	)
+
+SELECT 
+
+	c.contactLastName || &quot; &quot; || c.contactFirstName,
+
+	c.city,
+
+	c.country,
+
+	profit
+
+FROM customers AS c
+
+JOIN non_vip_customers 
+
+ON non_vip_customers.customerNumber = c.customerNumber
+
+LIMIT 10;
+
+	
+
+-- Compute the average of customer profits
+
+
+
+WITH  performance AS
+
+(SELECT o.customerNumber, round(SUM(od.quantityOrdered * (od.priceEach - p.buyPrice)),2) AS profit
+
+FROM orders o
+
+JOIN orderdetails od ON od.orderNumber = o.orderNumber
+
+JOIN products p ON p.productCode = od.productCode
+
+GROUP BY o.customerNumber
+
+ORDER BY profit)
+
+SELECT  round(avg(profit),2) as LTV
+
+FROM performance;
+
+-- 
+
+-- LTV tells us how much profit an average customer generates during their lifetime with our store. 
+
+-- We can use it to predict our future profit. So, if we get ten new customers next month, 
+
+-- we'll earn 390,395 dollars, and we can decide based on this prediction how much we can spend on acquiring new customers.
+
+
+
 </sql><current_tab id="0"/></tab_sql></sqlb_project>
