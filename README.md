@@ -30,3 +30,8 @@ Project Descriptions:
  7) Products: a list of scale model cars
  8) ProductLines: a list of product line categories
 
+Below are the main questions that i am going to answer in this Analysis
+### Question 1: Which products should we order more of or less of?
+### Question 2: How should we tailor marketing and communication strategies to customer behaviors?
+### Question 3: How much can we spend on acquiring new customers?
+
