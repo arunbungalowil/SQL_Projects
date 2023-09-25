@@ -22,7 +22,7 @@ Project Descriptions:
  # DATABASE: Scale Model Cars Database 
  ## It contains eight tables:
  1) Customers: customer data
- 2)Employees: all employee information
+ 2) Employees: all employee information
  3) Offices: sales office information
  4) Orders: customers' sales orders
  5) OrderDetails: sales order line for each sales order
