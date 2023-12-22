@@ -113,7 +113,7 @@ SELECT
 		
 SELECT p.productCode,p.productName,p.productLine
 FROM products AS p
-WHERE p.productCode in table_1 AND p.productCode IN table_2;
+WHERE p.productCode in (SELECT productCode FROM table_1) AND p.productCode IN (SELECT productCode FROM table_2);
 
 --  how much profit each customer generates.
 SELECT 
