@@ -31,7 +31,7 @@ SELECT
 	SUM(quantityInStock) AS total
 FROM products
 GROUP BY productLine
-LIMIT 10
+ORDER BY total
 -- Write a query to display the following table:
 -- Select each table name as a string.
 -- Select the number of attributes as an integer (count the number of attributes per table).
